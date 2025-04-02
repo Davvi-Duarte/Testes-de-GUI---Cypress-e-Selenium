@@ -23,3 +23,24 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+//
+// 
+//
+// cypress/support/commands.js
+
+// Comando customizado para login no Sauce Demo
+Cypress.Commands.add('login_sauce', (username, password) => {
+    // Visitar a página de login
+    cy.visit('https://www.saucedemo.com/v1/index.html');
+    
+    // Preencher os campos de nome de usuário e senha
+    cy.get('input[name="user-name"]').type(username);
+    cy.get('input[name="password"]').type(password);
+    
+    // Clicar no botão de login
+    cy.get('#login-button').click();
+    
+    // Verificar se a URL da página foi alterada corretamente para a página de inventário após o login
+    cy.url().should('include', '/inventory.html');  // Ajuste a URL conforme necessário
+  });
+  
