@@ -1,0 +1,22 @@
+{
+  "name": "testes-de-gui---cypress-e-selenium",
+  "version": "1.0.0",
+  "description": "Repositório destinado ao estudo de cypress e selenium",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Davvi-Duarte/Testes-de-GUI---Cypress-e-Selenium.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Davvi-Duarte/Testes-de-GUI---Cypress-e-Selenium/issues"
+  },
+  "homepage": "https://github.com/Davvi-Duarte/Testes-de-GUI---Cypress-e-Selenium#readme",
+  "devDependencies": {
+    "cypress": "^14.2.1"
+  }
+}
