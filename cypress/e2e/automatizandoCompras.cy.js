@@ -42,7 +42,7 @@ describe('Testes de compras', () => {
 
     })
 
-    it.only('remoção de produto por meio da tela de carrinho - standard_user', () => {
+    it('remoção de produto por meio da tela de carrinho - standard_user', () => {
         cy.login_sauce('standard_user', 'secret_sauce');
         cy.get(':nth-child(1) > .pricebar > .btn_primary').click()
         cy.get(':nth-child(2) > .pricebar > .btn_primary').click()
@@ -65,6 +65,18 @@ describe('Testes de compras', () => {
         cy.get(':nth-child(8) > .cart_item_label > .item_pricebar > .btn_secondary').click()
         cy.get('.fa-layers-counter').should('not.exist')
     })
+})
 
 
+describe('Teste de permanencia de carrinho pós logout', () => {
+    
+    it('Verifica se o carrinho permanece após logout - standard_user', () => {
+        cy.login_sauce('standard_user', 'secret_sauce');
+        cy.preencheCarrinho();
+        cy.get('.bm-burger-button > button').click()
+        cy.get('#logout_sidebar_link').click()
+        cy.get('.login_logo').should('be.visible')
+        cy.login_sauce('standard_user', 'secret_sauce');
+        cy.get('.fa-layers-counter').contains('6')
+    })
 })
