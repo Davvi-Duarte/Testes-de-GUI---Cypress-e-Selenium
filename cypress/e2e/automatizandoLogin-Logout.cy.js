@@ -1,5 +1,5 @@
 describe('Testes logins', () => {
-  it('login valido', () => {
+  it.only('login valido', () => {
     cy.visit('https://www.saucedemo.com/v1/index.html')
     cy.get('[data-test="username"]').type('standard_user')
     cy.get('[data-test="password"]').type('secret_sauce')
@@ -56,4 +56,32 @@ describe('Testes logins', () => {
     cy.get('[data-test="error"]').contains('Epic sadface: Username is required')
   })
 
+ 
+
 })
+
+describe('Testes de logout', () => {
+
+  it('logout - standard_user', () => {
+    cy.login_sauce('standard_user', 'secret_sauce');
+    cy.get('.bm-burger-button > button').click()
+    cy.get('#logout_sidebar_link').click()
+    cy.get('.login_logo').should('be.visible')
+  })
+  
+  it('logout - performance_glitch_user', () => {
+    cy.login_sauce('performance_glitch_user', 'secret_sauce');
+    cy.get('.bm-burger-button > button').click()
+    cy.get('#logout_sidebar_link').click()
+    cy.get('.login_logo').should('be.visible')
+  })
+
+  it( 'logout - problem_user', () => {
+    cy.login_sauce('problem_user', 'secret_sauce');
+    cy.get('.bm-burger-button > button').click()
+    cy.get('#logout_sidebar_link').click()
+    cy.get('.login_logo').should('be.visible')
+  })
+
+})
+
