@@ -17,6 +17,54 @@ describe('Testes de compras', () => {
         cy.get('.btn_action').click()
         cy.get('.complete-header').contains('THANK YOU FOR YOUR ORDER')
     })
-    
+
+    it('remoção de produto por meio da tela de produtos - standard_user', () => {
+        cy.login_sauce('standard_user', 'secret_sauce');
+        cy.get(':nth-child(1) > .pricebar > .btn_primary').click()
+        cy.get(':nth-child(2) > .pricebar > .btn_primary').click()
+        cy.get(':nth-child(3) > .pricebar > .btn_primary').click()
+        cy.get(':nth-child(4) > .pricebar > .btn_primary').click()
+        cy.get(':nth-child(5) > .pricebar > .btn_primary').click()
+        cy.get(':nth-child(6) > .pricebar > .btn_primary').click()
+        cy.get('.fa-layers-counter').contains('6')
+        cy.get(':nth-child(1) > .pricebar > .btn_secondary').click()
+        cy.get('.fa-layers-counter').contains('5')
+        cy.get(':nth-child(2) > .pricebar > .btn_secondary').click()
+        cy.get('.fa-layers-counter').contains('4')
+        cy.get(':nth-child(3) > .pricebar > .btn_secondary').click()
+        cy.get('.fa-layers-counter').contains('3')
+        cy.get(':nth-child(4) > .pricebar > .btn_secondary').click()
+        cy.get('.fa-layers-counter').contains('2')
+        cy.get(':nth-child(5) > .pricebar > .btn_secondary').click()
+        cy.get('.fa-layers-counter').contains('1')
+        cy.get(':nth-child(6) > .pricebar > .btn_secondary').click()
+        cy.get('.fa-layers-counter').should('not.exist')
+
+    })
+
+    it.only('remoção de produto por meio da tela de carrinho - standard_user', () => {
+        cy.login_sauce('standard_user', 'secret_sauce');
+        cy.get(':nth-child(1) > .pricebar > .btn_primary').click()
+        cy.get(':nth-child(2) > .pricebar > .btn_primary').click()
+        cy.get(':nth-child(3) > .pricebar > .btn_primary').click()
+        cy.get(':nth-child(4) > .pricebar > .btn_primary').click()
+        cy.get(':nth-child(5) > .pricebar > .btn_primary').click()
+        cy.get(':nth-child(6) > .pricebar > .btn_primary').click()
+        cy.get('.fa-layers-counter').contains('6')
+        cy.get('[data-icon="shopping-cart"]').click()
+        cy.get(':nth-child(3) > .cart_item_label > .item_pricebar > .btn_secondary').click()
+        cy.get('.fa-layers-counter').contains('5')
+        cy.get(':nth-child(4) > .cart_item_label > .item_pricebar > .btn_secondary').click()
+        cy.get('.fa-layers-counter').contains('4')
+        cy.get(':nth-child(5) > .cart_item_label > .item_pricebar > .btn_secondary').click()
+        cy.get('.fa-layers-counter').contains('3')
+        cy.get(':nth-child(6) > .cart_item_label > .item_pricebar > .btn_secondary').click()
+        cy.get('.fa-layers-counter').contains('2')
+        cy.get(':nth-child(7) > .cart_item_label > .item_pricebar > .btn_secondary').click()
+        cy.get('.fa-layers-counter').contains('1')
+        cy.get(':nth-child(8) > .cart_item_label > .item_pricebar > .btn_secondary').click()
+        cy.get('.fa-layers-counter').should('not.exist')
+    })
+
 
 })
