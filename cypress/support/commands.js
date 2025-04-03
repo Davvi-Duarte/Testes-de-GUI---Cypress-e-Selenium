@@ -43,4 +43,14 @@ Cypress.Commands.add('login_sauce', (username, password) => {
     // Verificar se a URL da página foi alterada corretamente para a página de inventário após o login
     cy.url().should('include', '/inventory.html');  // Ajuste a URL conforme necessário
   });
+
+Cypress.Commands.add('preencheCarrinho', () => {
+  cy.get(':nth-child(1) > .pricebar > .btn_primary').click()
+  cy.get(':nth-child(2) > .pricebar > .btn_primary').click()
+  cy.get(':nth-child(3) > .pricebar > .btn_primary').click()
+  cy.get(':nth-child(4) > .pricebar > .btn_primary').click()
+  cy.get(':nth-child(5) > .pricebar > .btn_primary').click()
+  cy.get(':nth-child(6) > .pricebar > .btn_primary').click()
+  cy.get('.fa-layers-counter').contains('6')
+});
   
