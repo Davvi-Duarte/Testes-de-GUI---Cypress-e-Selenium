@@ -53,4 +53,13 @@ Cypress.Commands.add('preencheCarrinho', () => {
   cy.get(':nth-child(6) > .pricebar > .btn_primary').click()
   cy.get('.fa-layers-counter').contains('6')
 });
+
+Cypress.Commands.add('preencheCarrinhoProblem', () => {
+  cy.get(':nth-child(1) > .pricebar > .btn_primary').click()
+  cy.get(':nth-child(2) > .pricebar > .btn_primary').click()
+  cy.get(':nth-child(3) > .pricebar > .btn_primary').click()
+  cy.get(':nth-child(4) > .pricebar > .btn_primary').click()
+  cy.get(':nth-child(5) > .pricebar > .btn_primary').click()
+  cy.get(':nth-child(6) > .pricebar > .btn_primary').click()
+});
   
